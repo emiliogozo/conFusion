@@ -14,3 +14,4 @@ fonts/glyphicons-halflings-regular.woff2
 js/bootstrap.js
 js/bootstrap.min.js
 js/npm.js
+bower_components/*
