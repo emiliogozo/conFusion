@@ -126,11 +126,12 @@ angular.module('confusionApp')
 
 .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
-  var featDishIdx = 0;
+  var featDishIdx = 0; 
+  var promoIdx = 0;
   var featLeaderIdx = 3;
 
   $scope.featDish = menuFactory.getDish(featDishIdx);
-  $scope.promotion = menuFactory.getPromotion();
+  $scope.promotion = menuFactory.getPromotion(promoIdx);
   $scope.featLeader = corporateFactory.getLeader(featLeaderIdx);
 
 }])
