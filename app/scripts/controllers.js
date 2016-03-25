@@ -7,7 +7,7 @@ angular.module('confusionApp')
   $scope.filtText = '';
   $scope.showDetails = false;
 
-  $scope.dishes= menuFactory.getDishes();
+  $scope.dishes = menuFactory.getDishes();
 
   $scope.select = function(setTab) {
     $scope.tab = setTab;
@@ -32,8 +32,20 @@ angular.module('confusionApp')
 }])
 
 .controller('ContactController', ['$scope', function($scope) {
-  $scope.feedback = {mychannel:"", firstName:"", lastName:"", agree:false, email:"" };
-  var channels = [{value:"tel", label:"Tel."}, {value:"Email",label:"Email"}];
+  $scope.feedback = {
+    mychannel: "",
+    firstName: "",
+    lastName: "",
+    agree: false,
+    email: ""
+  };
+  var channels = [{
+    value: "tel",
+    label: "Tel."
+  }, {
+    value: "Email",
+    label: "Email"
+  }];
   $scope.channels = channels;
   $scope.invalidChannelSelection = false;
 }])
@@ -41,15 +53,19 @@ angular.module('confusionApp')
 .controller('FeedbackController', ['$scope', function($scope) {
   $scope.sendFeedback = function() {
     console.log($scope.feedback);
-    if ($scope.feedback.agree && ($scope.feedback.mychannel == "")&& !$scope.feedback.mychannel) {
+    if ($scope.feedback.agree && ($scope.feedback.mychannel == "") && !$scope.feedback.mychannel) {
       $scope.invalidChannelSelection = true;
       console.log('incorrect');
-    }
-    else {
+    } else {
       $scope.invalidChannelSelection = false;
-      $scope.feedback = {mychannel:"", firstName:"", lastName:"",
-      agree:false, email:"" };
-      $scope.feedback.mychannel="";
+      $scope.feedback = {
+        mychannel: "",
+        firstName: "",
+        lastName: "",
+        agree: false,
+        email: ""
+      };
+      $scope.feedback.mychannel = "";
 
       $scope.feedbackForm.$setPristine();
       console.log($scope.feedback);
@@ -57,23 +73,22 @@ angular.module('confusionApp')
   };
 }])
 
-.controller('DishDetailController', ['$scope', 'menuFactory', function($scope, menuFactory) {
-
-  $scope.dish = menuFactory.getDish(3);
-            
+.controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
+  var dish = menuFactory.getDish(parseInt($stateParams.id, 10));
+  $scope.dish = dish;
 }])
 
 .controller('DishCommentController', ['$scope', function($scope) {
-            
+
   //Step 1: Create a JavaScript object to hold the comment from the form
   $scope.comment = {
-    rating:"5", 
-    comment:"", 
-    author:"", 
-    date:""
+    rating: "5",
+    comment: "",
+    author: "",
+    date: ""
   };
-  
-  $scope.submitComment = function () {
+
+  $scope.submitComment = function() {
 
     //Step 2: This is how you record the date
     $scope.comment.date = new Date().toISOString();
@@ -83,10 +98,10 @@ angular.module('confusionApp')
     $scope.commentForm.$setPristine();
     //Step 5: reset your JavaScript object that holds your comment
     $scope.comment = {
-      rating:"5", 
-      comment:"", 
-      author:"", 
-      date:""
+      rating: "5",
+      comment: "",
+      author: "",
+      date: ""
     };
-  } 
+  }
 }]);

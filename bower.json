@@ -10,7 +10,8 @@
     "Restaurant"
   ],
   "authors": [
-    "Jogesh Muppala"
+    "Jogesh Muppala",
+    "Emilio Gozo"
   ],
   "license": "MIT",
   "homepage": "",
@@ -24,6 +25,7 @@
   "dependencies": {
     "bootstrap": "~3.3.5",
     "font-awesome": "~4.4.0",
-    "angular": "~1.4.7"
+    "angular": "~1.4.7",
+    "angular-ui-router": "^0.2.18"
   }
 }
