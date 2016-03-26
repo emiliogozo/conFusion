@@ -2,10 +2,10 @@
 
 angular.module('confusionApp')
 
-.constant("baseURL","http://localhost:3000/")
-//.constant("baseURL","http://preview.r1zmitfipxhwipb9t5vjyks8mx8vvx6ryud1lcx1jrlik9.box.codeanywhere.com:3000/")
+.constant("baseURL", "http://localhost:3000/")
+//.constant("baseURL", "http://preview.r1zmitfipxhwipb9t5vjyks8mx8vvx6ryud1lcx1jrlik9.box.codeanywhere.com:3000/")
 
-.service('menuFactory', ['$http', 'baseURL', function($http,baseURL) {
+.service('menuFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
   var promotions = [{
       _id: 0,
@@ -19,11 +19,11 @@ angular.module('confusionApp')
   ];
 
   this.getDishes = function() {
-    return $http.get(baseURL+"dishes");
-  };
-
-  this.getDish = function(index) {
-    return $http.get(baseURL+"dishes/"+index);
+    return $resource(baseURL + "dishes/:id", null, {
+      'update': {
+        method: 'PUT'
+      }
+    });
   };
 
   // implement a function named getPromotion
