@@ -3,7 +3,6 @@
 angular.module('confusionApp')
 
 .constant("baseURL", "http://localhost:3000/")
-//.constant("baseURL", "http://preview.r1zmitfipxhwipb9t5vjyks8mx8vvx6ryud1lcx1jrlik9.box.codeanywhere.com:3000/")
 
 .service('menuFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
